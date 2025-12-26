@@ -1,9 +1,11 @@
 
-import { Dexie, Table } from 'dexie';
+import Dexie, { Table } from 'dexie';
 import { Question, Attempt, Bookmark, ActiveSession } from './types';
 
 // Fix: Property 'version' does not exist on type 'RadPrepDB' error by 
 // using the canonical constructor-based configuration pattern for Dexie with TypeScript.
+// Using default import for Dexie is often required for the class definition to be correctly 
+// recognized as having instance methods like .version() in subclassing scenarios.
 export class RadPrepDB extends Dexie {
   questions!: Table<Question>;
   attempts!: Table<Attempt>;
